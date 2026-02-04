@@ -1,7 +1,7 @@
 [project]
 name = "daskmsASTROKIT"
 description = "Astro convenience functions for daskms "
-license = "GPL-3.0-licence"
+license = "GPL-2.0-or-later"
 version = "0.0.1"
 readme = "README.md"
 authors = [{name = "Hans-Rainer Kloeckner", email = "hrkloeck@gmail.com"}]
