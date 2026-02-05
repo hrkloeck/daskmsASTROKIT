@@ -7,7 +7,7 @@ authors = [
 description = "Astro convenience functions for daskms "
 readme      = "README.md"
 requires-python = '>=3.12,<3.14'
-license = { file =LICENCE"}
+license = { file = "LICENCE"}
 dependencies = [
 	     "dask-ms >=0.2.29","astropy >= 7.2","matplotlib >= 3.9.1"
 ]
