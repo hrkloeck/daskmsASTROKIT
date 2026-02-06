@@ -6,9 +6,18 @@ authors = [
 ]
 description = "Astro convenience functions for daskms "
 readme      = "README.md"
-requires-python = '>=3.12,<3.14'
+requires-python = ">=3.12,<3.14"
 license = { file = "LICENSE"}
 keywords = ["Radioastronomy", "Interferometry"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering :: Astronomy",
+    "Programming Language :: Python :: 3",
+]
 dependencies = [
 	     "dask-ms >=0.2.29","astropy >= 7.2","matplotlib >= 3.9.1"
 ]
@@ -18,7 +27,7 @@ include = ["daskms_ASTROKIT*"]
 
 
 [project.scripts]
-examol = "daskms_ASTROKIT.GET_MS_INFO:main"
+get_ms_info = "daskms_ASTROKIT.GET_MS_INFO:main"
 
 [build-system]
 requires = ["hatchling"]
