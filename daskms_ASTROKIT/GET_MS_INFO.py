@@ -30,9 +30,11 @@ def main():
     parser.add_option('--MS_FILE', dest='msfile', type=str,
                       help='MS - file name e.g. 1491291289.1ghz.1.1ghz.4hrs.ms')
 
-    parser.add_option('--WORK_DIR', dest='cwd', default='',type=str,
+    parser.add_option('--WORK_DIR', dest='wdir', default='',type=str,
                       help='Points to the working directory (e.g. usefull for containers)')
 
+    parser.add_option('--DATA_DIR', dest='ddir', default='',type=str,
+                      help='Points to the working directory (e.g. usefull for containers)')
 
     parser.add_option('--DOINFO_TAB', dest='getinfotab', default='',type=str,
                       help='Show table info only [default ALL tables, else use table name]')
@@ -59,9 +61,9 @@ def main():
 
     # set the parmaters
     #
-    cwd             = opts.cwd
-    #MSFN            = cwd + opts.msfile
-    MSFN            = opts.msfile
+    cwd             = opts.wdir
+    MSFN            = opts.ddir + opts.msfile
+    #MSFN            = opts.msfile
     getinfotabs     = opts.getinfotab
     doprtdatainfo   = opts.doprtdatainfo
     dodatainfoutput = opts.dodatainfoutput
