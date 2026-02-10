@@ -284,7 +284,8 @@ def ms_pol_info(msdata):
     extract basic polarisation information
     out of a Measurementset
     """
-    from STOKES_ID import STOKES_TYPES
+    #from STOKES_ID import STOKES_TYPES
+    from daskms_ASTROKIT.daskmsASTROKIT.STOKES_ID import STOKES_TYPES  
 
     p_info = xds_from_table(msdata+'::POLARIZATION',group_cols='__row__')
 
@@ -301,7 +302,8 @@ def get_stokes_para(stokesp):
     input: integer or string
     return the Stokes Parameter or the Stokes ID
     """
-    from STOKES_ID import STOKES_TYPES
+    #from STOKES_ID import STOKES_TYPES
+    from daskms_ASTROKIT.daskmsASTROKIT.STOKES_ID import STOKES_TYPES
     
     if str(stokesp).isdigit():
         stokes = STOKES_TYPES[stokesp]
