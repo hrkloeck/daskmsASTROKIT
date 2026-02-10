@@ -19,7 +19,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 dependencies = [
-	     "daskms>=0.2.29","astropy >= 7.2","matplotlib >= 3.9.1"
+	     "daskms>=0.2.23","astropy >= 7.2","matplotlib >= 3.9.1"
 ]
 
 [tool.setuptools.package.find]
