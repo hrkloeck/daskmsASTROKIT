@@ -62,8 +62,8 @@ def main():
 
     # set the parmaters
     #
-    cwd             = opts.wdir
-    MSFN            = opts.ddir + opts.msfile
+    cwd             = opts.wdir +'/'
+    MSFN            = opts.ddir + '/' + opts.msfile
     #MSFN            = opts.msfile
     getinfotabs     = opts.getinfotab
     doprtdatainfo   = opts.doprtdatainfo
