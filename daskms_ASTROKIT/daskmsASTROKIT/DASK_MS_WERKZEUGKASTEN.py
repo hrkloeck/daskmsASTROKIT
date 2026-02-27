@@ -285,7 +285,8 @@ def ms_pol_info(msdata):
     out of a Measurementset
     """
     #from STOKES_ID import STOKES_TYPES
-    from daskms_ASTROKIT.daskmsASTROKIT.STOKES_ID import STOKES_TYPES  
+    #from daskms_ASTROKIT.daskmsASTROKIT.STOKES_ID import STOKES_TYPES  
+    from daskmsASTROKIT.STOKES_ID import STOKES_TYPES  
 
     p_info = xds_from_table(msdata+'::POLARIZATION',group_cols='__row__')
 
