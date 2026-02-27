@@ -234,7 +234,7 @@ def main():
         else:
             print('Array type is: ',array_type)
             print('Can not determine image sensitivities please add telescope information')
-            image_sens_jy = np.array(-1,-1,-1)
+            image_sens_jy = np.array([[-1],[-1],[-1]])
 
 
 
