@@ -16,7 +16,8 @@ import json
 import numpy as np
 from astropy.time import Time
 
-import  daskms_ASTROKIT.daskmsASTROKIT.DASK_MS_WERKZEUGKASTEN as INFMS
+#import  daskms_ASTROKIT.daskmsASTROKIT.DASK_MS_WERKZEUGKASTEN as INFMS
+import  daskmsASTROKIT.DASK_MS_WERKZEUGKASTEN as INFMS
 
 def main():
 
