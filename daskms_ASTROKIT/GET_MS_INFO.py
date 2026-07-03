@@ -240,10 +240,10 @@ def main():
                 print('Strange seems to be more than 2 types of antennas in the array')
                 sys.exit(-1)
                 
-            SEFD_A  = INFMS.SEFD(INFMS.obs_band(center_freq),array_config[0][0]) 
+            SEFD_A, ANTYPE_A  = INFMS.SEFD(INFMS.obs_band(center_freq),array_config[0][0]) 
             N_Ant_A = array_config[1][0]
 
-            SEFD_B  = INFMS.SEFD(INFMS.obs_band(center_freq),array_config[0][1]) 
+            SEFD_B,ANTYPE_B  = INFMS.SEFD(INFMS.obs_band(center_freq),array_config[0][1]) 
             N_Ant_B = array_config[1][1]
 
             bsl_sens = []
