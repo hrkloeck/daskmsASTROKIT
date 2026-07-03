@@ -1370,7 +1370,7 @@ def SEFD(obsband,telescope_diameter):
         if obsband =='LBAND':
             SEFD = 0.7332 * 426   # Jy
         
-    return SEFD, ANTTYPE
+    return SEFD, ANTYPE
     
 
 def SEFD_MK_SYSTEM(obsband):
