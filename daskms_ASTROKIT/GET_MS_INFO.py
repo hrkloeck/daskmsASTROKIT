@@ -257,7 +257,7 @@ def main():
 
             image_sens = []
             for t_obs in inttimes:
-                image_sens.append(INFMS.image_sensitivity(N_Ant_A,SEFD_A,N_Ant_B,SEFD_B,t_obs,bandwidth,n_pol,array_eff_mkplus=1)
+                image_sens.append(INFMS.image_sensitivity(N_Ant_A,SEFD_A,N_Ant_B,SEFD_B,t_obs,bandwidth,n_pol,array_eff_mkplus=1))
                 
             image_sens_jy = np.array(image_sens) * 1E26
             
