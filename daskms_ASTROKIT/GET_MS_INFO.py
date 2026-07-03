@@ -108,13 +108,13 @@ def main():
 
         array_type = 'HOMOGENEOUS'
         if len(np.unique(msinfo['DISH_DIAMETER'])) > 1:
-            array_type = 'INHOMOGENEOUS'
-
+            array_type   = 'INHOMOGENEOUS'
+            array_config = np.unique(msinfo['DISH_DIAMETER'],return_counts=True)
+            
         number_of_antennas = len(msinfo['ANTS'])
 
         # get baseline length 
         bsl_length = INFMS.ms_baselines_length(MSFN)
-
 
         # Field Information
         field_info = INFMS.ms_field_info(MSFN)
@@ -215,8 +215,11 @@ def main():
             # SEFD      = INFMS.SEFD_theo(np.unique(msinfo['DISH_DIAMETER']),T_sys,eta_a)
 
             # based on the MK+ page
-            SEFD      = INFMS.SEFD_MK_SYSTEM(INFMS.obs_band(center_freq))/1E26
+            #SEFD      = INFMS.SEFD_MK_SYSTEM(INFMS.obs_band(center_freq))/1E26
 
+            SEFD      = INFMS.SEFD(INFMS.obs_band(center_freq),np.unique(msinfo['DISH_DIAMETER'])) 
+
+            
             bsl_sens = []
             bsl_sens.append(INFMS.baseline_sensitivity(SEFD,SEFD,bandwidth,min(np.unique(exptimes)),eta_s=1))
             bsl_sens.append(INFMS.baseline_sensitivity(SEFD,SEFD,bandwidth,max(np.unique(exptimes)),eta_s=1))
@@ -233,10 +236,36 @@ def main():
 
         else:
             print('Array type is: ',array_type)
-            print('Can not determine image sensitivities please add telescope information')
-            image_sens_jy = np.array([[-1],[-1],[-1]])
+            if np.shape(array_config) != (2,2):
+                print('Strange seems to be more than 2 types of antennas in the array')
+                sys.exit(-1)
+                
+            SEFD_A  = INFMS.SEFD(INFMS.obs_band(center_freq),array_config[0][0]) 
+            N_Ant_A = array_config[1][0]
 
+            SEFD_B  = INFMS.SEFD(INFMS.obs_band(center_freq),array_config[0][1]) 
+            N_Ant_B = array_config[1][1]
 
+            bsl_sens = []
+            bsl_sens.append(INFMS.baseline_sensitivity(SEFD_A,SEFD_A,bandwidth,min(np.unique(exptimes)),eta_s=1))
+            bsl_sens.append(INFMS.baseline_sensitivity(SEFD_A,SEFD_A,bandwidth,max(np.unique(exptimes)),eta_s=1))
+            bsl_sens.append(INFMS.baseline_sensitivity(SEFD_B,SEFD_B,bandwidth,min(np.unique(exptimes)),eta_s=1))
+            bsl_sens.append(INFMS.baseline_sensitivity(SEFD_B,SEFD_B,bandwidth,max(np.unique(exptimes)),eta_s=1))
+
+            bsl_sens    = np.unique(bsl_sens)
+            bsl_sens_jy = np.array(bsl_sens) * 1E26
+
+            image_sens = []
+            for t_obs in inttimes:
+                image_sens.append(INFMS.image_sensitivity(N_Ant_A,SEFD_A,N_Ant_B,SEFD_B,t_obs,bandwidth,n_pol,array_eff_mkplus=1)
+                
+            image_sens_jy = np.array(image_sens) * 1E26
+            
+            
+            #print('Can not determine image sensitivities please add telescope information')
+            #image_sens_jy = np.array([[-1],[-1],[-1]])
+
+            #sys.exit(-1)
 
         # Determine the array center and the antenna sorted by distance
         

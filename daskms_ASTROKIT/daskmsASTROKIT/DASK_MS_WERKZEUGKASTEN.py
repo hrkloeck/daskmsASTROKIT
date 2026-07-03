@@ -1,4 +1,4 @@
-# HRK 2023
+# HRK 2026
 #
 # Hans-Rainer Kloeckner
 # hrk@mpifr-bonn.mpg.de 
@@ -1347,6 +1347,31 @@ def SEFD_theo(diameter,T_sys,eta_a):
 
     return(T_sys / ((eta_a * A)/(2*K_B)))
 
+
+def SEFD(obsband,telescope_diameter):
+    """
+    https://www.meerkatplus.tel/mk-technical-details/
+
+    The SEFD's are based on the MK+ page
+    """
+    SEFD   = 0
+    ANTYPE = ''
+
+    if telescope_diameter < 14.9:
+        ANTYPE = 'MK'
+        if obsband == 'SBAND':
+            SEFD = 495   # Jy
+        if obsband =='LBAND':
+            SEFD = 426   # Jy
+    else:
+        ANTYPE = 'SKAMID'
+        if obsband == 'SBAND':
+            SEFD = 0.7332 * 495   # Jy
+        if obsband =='LBAND':
+            SEFD = 0.7332 * 426   # Jy
+        
+    return SEFD, ANTTYPE
+    
 
 def SEFD_MK_SYSTEM(obsband):
     """
