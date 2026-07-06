@@ -1472,7 +1472,7 @@ def image_sensitivity_inhomogenious_array(N_MK,SEFD_MK,N_MKplus,SEFD_SKA,t_int,d
     N_bsl_MK_MKplus =  N_bsl_tot -  N_bsl_MK - N_bsl_MKplus     # intermixed baselines
     # ############################
 
-    image_sensitivity_MKplus =  1/array_eff_mkplus * sqrt( 1 / (n_pol * N_tot * (N_tot - 1) * delta_nu * t_obs) * (SEFD_MK**2 * N_bsl_MK + SEFD_SKA**2 * N_bsl_MKplus + SEFD_SKA * SEFD_MK * N_bsl_MK_MKplus) / N_bsl_tot )
+    image_sensitivity_MKplus =  1/array_eff_mkplus * sqrt( 1 / (n_pol * N_tot * (N_tot - 1) * delta_nu * t_int) * (SEFD_MK**2 * N_bsl_MK + SEFD_SKA**2 * N_bsl_MKplus + SEFD_SKA * SEFD_MK * N_bsl_MK_MKplus) / N_bsl_tot )
     #print('MeerKATplus image sensitivity: ',image_sensitivity_MKplus,'[Jy]')
 
     return(image_sensitivity_MKplus)
