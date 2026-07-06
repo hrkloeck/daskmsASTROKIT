@@ -217,9 +217,8 @@ def main():
             # based on the MK+ page
             #SEFD      = INFMS.SEFD_MK_SYSTEM(INFMS.obs_band(center_freq))/1E26
 
-            SEFD      = INFMS.SEFD(INFMS.obs_band(center_freq),np.unique(msinfo['DISH_DIAMETER'])) 
+            SEFD, ANTYPE = INFMS.SEFD(INFMS.obs_band(center_freq),np.unique(msinfo['DISH_DIAMETER'])) 
 
-            
             bsl_sens = []
             bsl_sens.append(INFMS.baseline_sensitivity(SEFD,SEFD,bandwidth,min(np.unique(exptimes)),eta_s=1))
             bsl_sens.append(INFMS.baseline_sensitivity(SEFD,SEFD,bandwidth,max(np.unique(exptimes)),eta_s=1))
@@ -235,7 +234,6 @@ def main():
             image_sens_jy = np.array(image_sens) #* 1E26
 
         else:
-            # print('Array type is: ',array_type)
 
             if np.shape(array_config) != (2,2):
                 print('Strange seems to be more than 2 types of antennas in the array')
