@@ -183,12 +183,11 @@ def main():
             exptimes += exposure_time_so[so]
 
         # Determine FoV
-        
         FOV_calc = []
-        FOV_calc.append(min(INFMS.beams(min(msinfo['DISH_DIAMETER']),min(freq_range),type='FoV')))
-        FOV_calc.append(min(INFMS.beams(min(msinfo['DISH_DIAMETER']),max(freq_range),type='FoV')))
-        FOV_calc.append(max(INFMS.beams(max(msinfo['DISH_DIAMETER']),min(freq_range),type='FoV')))
-        FOV_calc.append(max(INFMS.beams(max(msinfo['DISH_DIAMETER']),max(freq_range),type='FoV')))
+        FOV_calc.append(min(INFMS.beams(msinfo['DISH_DIAMETER'],min(freq_range),type='FoV')))
+        FOV_calc.append(min(INFMS.beams(msinfo['DISH_DIAMETER'],max(freq_range),type='FoV')))
+        FOV_calc.append(max(INFMS.beams(msinfo['DISH_DIAMETER'],min(freq_range),type='FoV')))
+        FOV_calc.append(max(INFMS.beams(msinfo['DISH_DIAMETER'],max(freq_range),type='FoV')))
 
         # Determine angular resolution
         ang_res_calc = []
