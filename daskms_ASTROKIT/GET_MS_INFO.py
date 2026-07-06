@@ -183,11 +183,12 @@ def main():
             exptimes += exposure_time_so[so]
 
         # Determine FoV
+        
         FOV_calc = []
-        FOV_calc.append(min(INFMS.beams(msinfo['DISH_DIAMETER'],min(freq_range),type='FoV')))
-        FOV_calc.append(min(INFMS.beams(msinfo['DISH_DIAMETER'],max(freq_range),type='FoV')))
-        FOV_calc.append(max(INFMS.beams(msinfo['DISH_DIAMETER'],min(freq_range),type='FoV')))
-        FOV_calc.append(max(INFMS.beams(msinfo['DISH_DIAMETER'],max(freq_range),type='FoV')))
+        FOV_calc.append(min(INFMS.beams(min(msinfo['DISH_DIAMETER']),min(freq_range),type='FoV')))
+        FOV_calc.append(min(INFMS.beams(min(msinfo['DISH_DIAMETER']),max(freq_range),type='FoV')))
+        FOV_calc.append(max(INFMS.beams(max(msinfo['DISH_DIAMETER']),min(freq_range),type='FoV')))
+        FOV_calc.append(max(INFMS.beams(max(msinfo['DISH_DIAMETER']),max(freq_range),type='FoV')))
 
         # Determine angular resolution
         ang_res_calc = []
@@ -226,13 +227,13 @@ def main():
 
             bsl_sens  = np.unique(bsl_sens)
 
-            bsl_sens_jy = np.array(bsl_sens) * 1E26
+            bsl_sens_jy = np.array(bsl_sens) #* 1E26
 
             image_sens = []
             for t_obs in inttimes:
                 image_sens.append(INFMS.image_sensitivity(SEFD,number_of_antennas,t_obs,bandwidth,n_pol,eta_s=1))
 
-            image_sens_jy = np.array(image_sens) * 1E26
+            image_sens_jy = np.array(image_sens) #* 1E26
 
         else:
             # print('Array type is: ',array_type)
@@ -254,20 +255,15 @@ def main():
             bsl_sens.append(INFMS.baseline_sensitivity(SEFD_B,SEFD_B,bandwidth,max(np.unique(exptimes)),eta_s=1))
 
             bsl_sens    = np.unique(bsl_sens)
-            bsl_sens_jy = np.array(bsl_sens) * 1E26
+            bsl_sens_jy = np.array(bsl_sens) #* 1E26
 
             image_sens = []
             for t_obs in inttimes:
                 image_sens.append(INFMS.image_sensitivity_inhomogenious_array(N_Ant_A,SEFD_A,N_Ant_B,SEFD_B,t_obs,bandwidth,n_pol,array_eff_mkplus=1))
                 
-            image_sens_jy = np.array(image_sens) * 1E26
+            image_sens_jy = np.array(image_sens) #* 1E26
             
             
-            #print('Can not determine image sensitivities please add telescope information')
-            #image_sens_jy = np.array([[-1],[-1],[-1]])
-
-            #sys.exit(-1)
-
         # Determine the array center and the antenna sorted by distance
         
         antinfo_pos = INFMS.order_antenna_wrst_A_center(MSFN)
