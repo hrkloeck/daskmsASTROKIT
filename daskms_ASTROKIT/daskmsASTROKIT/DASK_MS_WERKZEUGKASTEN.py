@@ -1444,7 +1444,7 @@ def baseline_sensitivity(SEFD1,SEFD2,bw,t_int,eta_s=1):
     return(rms_bsl)
 
 
-def image_sensitivity_inhomogenious_array(N_MK,SEFD_MK,N_MKplus,SEFD_SKA,t_int,bw,n_pol,array_eff_mkplus=1):
+def image_sensitivity_inhomogenious_array(N_MK,SEFD_MK,N_MKplus,SEFD_SKA,t_int,delta_nu,n_pol,array_eff_mkplus=1):
     """
     Based on Wrobel & Walker 1999 Synthesis Imaging -- page 
 
