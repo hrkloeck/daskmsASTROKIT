@@ -235,7 +235,8 @@ def main():
             image_sens_jy = np.array(image_sens) * 1E26
 
         else:
-            print('Array type is: ',array_type)
+            # print('Array type is: ',array_type)
+
             if np.shape(array_config) != (2,2):
                 print('Strange seems to be more than 2 types of antennas in the array')
                 sys.exit(-1)
