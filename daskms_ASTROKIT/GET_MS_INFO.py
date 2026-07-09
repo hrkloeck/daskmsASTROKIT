@@ -68,7 +68,7 @@ def main():
     getinfotabs     = opts.getinfotab
     doprtdatainfo   = opts.doprtdatainfo
     dodatainfoutput = opts.dodatainfoutput
-
+    file_name       = opts.msfile
 
 
     # --------------------------------------------------------------------------
@@ -268,6 +268,7 @@ def main():
 
 
         MS_FULL_INFO = {}
+        MS_FULL_INFO.update({'MS_FILE_NAME':file_name})        
         MS_FULL_INFO.update({'TELESCOPE_NAME':msinfo['TELESCOPE_NAME']})
         MS_FULL_INFO.update({'PROJECT_ID':msinfo['PROJECT']})
         MS_FULL_INFO.update({'TIMERANGE_START_utc':Time(np.amin(np.array(time_range))/(24. * 3600.),scale='utc',format='mjd').iso})
@@ -323,6 +324,7 @@ def main():
         if doprtdatainfo:
         
             print('\n')
+            print('MS-file                        :  ',file_name)        
             print('telescope                      :  ',msinfo['TELESCOPE_NAME'])        
             print('project ID                     :  ',msinfo['PROJECT'])
 
